@@ -325,7 +325,7 @@ def _typical(name):
     n = name.lower()
     for keys, watts, hours, label in TYPICAL:
         for k in keys:
-            if (k == "ac" and re.search(r"\bac\b", n)) or (k != "ac" and re.search(r"\b" + re.escape(k), n)):
+            if (k == "ac" and re.search(r"\bacs?\b", n)) or (k != "ac" and re.search(r"\b" + re.escape(k), n)):
                 return watts, hours, label
     return None
 
