@@ -257,6 +257,7 @@ def _now():
 
 def _log(filename, record):
     record = {"timestamp": _now(), **record}
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
     with open(LOG_DIR / filename, "a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
@@ -568,7 +569,7 @@ I8. For smoke, a burning smell, sparking or a damaged battery: tell the customer
 I9. Stay on topic (solar, batteries, energy use, CedarSun). Steer other subjects back in one friendly sentence.
 I10. Reply in the language and script given by the LANGUAGE line. Arabic and Arabizi must be Lebanese dialect, not formal Arabic.
 I11. If a customer sincerely asks whether they are talking to a person or an AI, say you are CedarSun's AI assistant.
-I12. After a useful answer about sizing or services, invite the customer to leave a name and email for the free site survey.
+I12. Invite the customer to leave a name and email for the free site survey only after a sizing answer, a price question, or when they show interest in buying or booking. Do not add the invitation to plain factual answers (warranty, contacts, policies), to safety replies, or when you already invited them earlier in the chat.
 
 OUTPUT FORMAT: reply with exactly one of these two shapes and nothing else.
   (a) to use a tool:
@@ -587,8 +588,8 @@ Thought: This is a CedarSun policy fact, so I must look it up before answering.
 Action: lookup_knowledge
 Action Input: {"query": "inverter warranty"}
 Observation: {"status": "ok", "passages": [{"source": "summary", "text": "Warranty: panels 12 years product and 25 years performance; inverter 10 years; battery 10 years; CedarSun workmanship 5 years."}]}
-Thought: The documents say 10 years for the inverter. I can answer and offer the survey.
-Answer: The inverter comes with a 10-year warranty. If you would like, leave me your name and email and we can book your free site survey.""",
+Thought: The documents say 10 years for the inverter. This is a plain factual question, so I answer it directly without a sales pitch.
+Answer: The inverter comes with a 10-year warranty.""",
     # extra shots used by the few-shot experiment
     """Customer: How many panels do I need? I have a fridge and two air conditioners in Beirut.
 Thought: Sizing must come from the sizing tool, with appliance names in English.
