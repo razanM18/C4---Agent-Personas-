@@ -1,0 +1,11 @@
+langgraph>=0.2
+openai>=1.50.0
+python-dotenv>=1.0.0
+gradio>=4.44.0
+pypdf>=4.0.0
+pandas>=2.0
+matplotlib>=3.7
+nbformat>=5.9
+nbclient>=0.10
+ipykernel>=6.29
+pytest>=8.0
