@@ -1,10 +1,3 @@
----
-title: CedarSun ReAct Agent
-emoji: ☀️
-sdk: gradio
-app_file: app_c4.py
-pinned: false
----
 
 # C4: CedarSun ReAct agent with configurable personas
 
